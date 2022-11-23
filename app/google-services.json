@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "640370907407",
+    "project_id": "assesmenttest-8c723",
+    "storage_bucket": "assesmenttest-8c723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640370907407:android:ed2ecaa53077ac000c467a",
+        "android_client_info": {
+          "package_name": "com.almulla.assesmenttest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640370907407-rlb1iv0tv3ukan8vq7hq5rvnc9enm1ok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnC5Px1oGoPcf-tcdxYwfrX8inwr4PtQM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640370907407-rlb1iv0tv3ukan8vq7hq5rvnc9enm1ok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

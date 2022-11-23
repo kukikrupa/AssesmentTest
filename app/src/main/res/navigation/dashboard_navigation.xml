@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/select_user_navigation"
+    app:startDestination="@id/encryptionFragment">
+
+    <fragment
+        android:id="@+id/encryptionFragment"
+        android:name="com.almulla.assesmenttest.ui.component.main.encryption.EncryptionFragment"
+        android:label="encryptionFragment"
+        app:popUpToInclusive="true"
+        tools:layout="@layout/fragment_encryption" />
+
+    <fragment
+        android:id="@+id/toDoListFragment"
+        android:name="com.almulla.assesmenttest.ui.component.main.to_do.ToDoListFragment"
+        android:label="toDoListFragment"
+        tools:layout="@layout/fragment_to_do_list" />
+
+    <fragment
+        android:id="@+id/stopwatchFragment"
+        android:name="com.almulla.assesmenttest.ui.component.main.stopwatch.StopwatchFragment"
+        android:label="stopwatchFragment"
+        tools:layout="@layout/fragment_stopwatch" />
+
+
+</navigation>

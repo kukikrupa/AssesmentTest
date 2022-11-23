@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">AssesmentTest</string>
+    <string name="encryption">Encryption</string>
+    <string name="to_do">To Do</string>
+    <string name="stopwatch">Stopwatch</string>
+    <string name="change_language">Change Language</string>
+    <string name="logout">Logout</string>
 </resources>
