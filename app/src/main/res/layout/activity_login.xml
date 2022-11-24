@@ -27,24 +27,43 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:text="Demo App"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+            app:layout_constraintBottom_toTopOf="@+id/btn_login_google"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_view_logo"
             app:layout_constraintVertical_chainStyle="spread" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <FrameLayout
+            android:id="@+id/btn_login_google"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_weight="1"
             android:layout_marginTop="@dimen/_150sdp"
-            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_app_name"
-            app:layout_constraintVertical_chainStyle="spread" />
+            android:background="@drawable/google_login_button"
+            app:layout_constraintVertical_chainStyle="spread">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/ic_google"
+                android:drawablePadding="@dimen/_8sdp"
+                android:text="Login with Google"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp" />
+
+            <!--<com.google.android.gms.common.SignInButton-->
+            <!--android:id="@+id/google_login_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone"/>-->
+        </FrameLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

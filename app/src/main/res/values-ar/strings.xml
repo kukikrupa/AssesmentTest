@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">AssesmentTest</string>
+    <string name="encryption">التشفير</string>
+    <string name="to_do">لكى يفعل</string>
+    <string name="stopwatch">  ساعة التوقيف</string>
+    <string name="change_language">إلغاء</string>
+    <string name="logout">سجيل تسجيل</string>
+
+    <string name="message">رسالة</string>
+    <string name="secret_key">المفتاح السري</string>
+    <string name="encrypt">تشفير</string>
+    <string name="decrypt">تشفير فك</string>
+    <string name="delete">حذف</string>
+    <string name="are_you_sure_want_to_delete_this_task">هل أنت متأكد أنك تريد حذف هذه المهمة؟</string>
+    <string name="task_name">اسم المهمة</string>
+    <string name="date_and_time">اريخ و التاريخ</string>
+    <string name="save">أضف</string>
+    <string name="clear">واضح</string>
+    <string name="ok">حسنا</string>
+
+    <string name="cancel">إلغاء</string>
+    <string name="are_you_sure_you_want_logout">هل أنت متأكد أنك تريد تسجيل الخروج؟</string>
+    <string name="add_task">إضافة مهمة</string>
+
+
+    <string name="google_auth_web_clent_id">640370907407-rlb1iv0tv3ukan8vq7hq5rvnc9enm1ok.apps.googleusercontent.com</string>
+    <string name="google_auth_server_clent_id">640370907407-rlb1iv0tv3ukan8vq7hq5rvnc9enm1ok.apps.googleusercontent.com</string>
+</resources>

@@ -1,5 +1,7 @@
 package com.almulla.assesmenttest.ui.component.main
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
@@ -8,6 +10,9 @@ import androidx.navigation.findNavController
 import com.almulla.assesmenttest.R
 import com.almulla.assesmenttest.databinding.ActivityMainBinding
 import com.almulla.assesmenttest.ui.base.BaseActivity
+import com.almulla.assesmenttest.ui.component.change_language.ChangeLanguageActivity
+import com.almulla.assesmenttest.ui.component.login.LoginActivity
+import com.almulla.assesmenttest.utils.clearUserData
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.item_toolbar.*
 
@@ -26,6 +31,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
     }
 
     override fun initViewBinding() {
+
         getBinding().apply {
             setToolBar()
             mDrawerToggle = ActionBarDrawerToggle(
@@ -35,12 +41,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
                 R.string.app_name
             )
 
-
             supportActionBar!!.setHomeButtonEnabled(true)
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
             drawerLayout.setDrawerListener(mDrawerToggle)
-
 
             mBottomNavigation.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
@@ -73,11 +77,13 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
 
                     R.id.nav_change_language -> {
                         drawerLayout.closeDrawers()
+                        startActivity(Intent(this@MainActivity, ChangeLanguageActivity::class.java))
                         return@setNavigationItemSelectedListener true
                     }
 
                     R.id.nav_logout -> {
                         drawerLayout.closeDrawers()
+                        showLogoutDialog()
                         return@setNavigationItemSelectedListener true
                     }
 
@@ -119,5 +125,27 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
 
     override fun onClick(view: View?) {
 
+    }
+
+    private fun showLogoutDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Demo App")
+        builder.setMessage(getString(R.string.are_you_sure_you_want_logout))
+
+        builder.setPositiveButton(getString(R.string.cancel)) { dialog, which ->
+            dialog.dismiss()
+        }
+
+        builder.setNegativeButton(getString(R.string.ok)) { dialog, which ->
+            dialog.dismiss()
+            logoutUser()
+        }
+
+        builder.show()
+    }
+
+    private fun logoutUser() {
+        clearUserData()
+        startActivity(Intent(this, LoginActivity::class.java))
     }
 }

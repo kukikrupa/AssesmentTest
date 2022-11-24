@@ -7,7 +7,9 @@ import com.almulla.assesmenttest.R
 import com.almulla.assesmenttest.databinding.ActivitySplashBinding
 import com.almulla.assesmenttest.ui.base.BaseActivity
 import com.almulla.assesmenttest.ui.component.login.LoginActivity
+import com.almulla.assesmenttest.ui.component.main.MainActivity
 import com.almulla.assesmenttest.utils.SPLASH_TIMER
+import com.almulla.assesmenttest.utils.isLogin
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -29,9 +31,11 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashVm>(), View.OnC
 
     private fun startNextActivity() {
         Handler().postDelayed({
-            startActivity(
-                Intent(this, LoginActivity::class.java)
-            )
+            if (isLogin())
+                startActivity(Intent(this, MainActivity::class.java))
+            else
+                startActivity(Intent(this, LoginActivity::class.java))
+
             finish()
         }, SPLASH_TIMER)
     }

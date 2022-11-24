@@ -1,12 +1,19 @@
 package com.almulla.assesmenttest.ui.base
 
+import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.MenuItem
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProviders
+import com.almulla.assesmenttest.ui.component.main.MainActivity
+import com.almulla.assesmenttest.utils.isEnglishLangSelected
+import java.util.*
 
 /** This is parent activity class used to define global accessible methods, vm setup, init view binding */
 abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : AppCompatActivity() {
@@ -25,6 +32,24 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : AppCompa
         binding.lifecycleOwner = this
         initViewBinding()
         observeViewModel()
+        if (isEnglishLangSelected().toString() == "en")
+            setLocale("en")
+        else
+            setLocale("ar")
+    }
+
+    fun setLocale(lang: String?) {
+        var myLocale: Locale = Locale(lang)
+        val res: Resources = resources
+        val dm: DisplayMetrics = res.getDisplayMetrics()
+        val conf: Configuration = res.getConfiguration()
+        conf.locale = myLocale
+        res.updateConfiguration(conf, dm)
+        baseContext.resources.updateConfiguration(
+            conf,
+            baseContext.resources.displayMetrics
+        )
+        invalidateOptionsMenu()
     }
 
 
@@ -47,5 +72,10 @@ abstract class BaseActivity<DB : ViewDataBinding, VM : BaseViewModel> : AppCompa
     override fun onDestroy() {
         super.onDestroy()
         viewModelStore.clear()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        // refresh your views here
+        super.onConfigurationChanged(newConfig)
     }
 }
