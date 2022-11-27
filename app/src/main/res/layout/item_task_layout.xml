@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_10sdp"
+        android:paddingTop="@dimen/_7sdp"
+        android:paddingRight="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_7sdp"
+        tools:context="com.example.android.todolist.MainActivity">
+
+        <TextView
+            android:id="@+id/text_view_task_name"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_7sdp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@android:color/primary_text_light"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_task_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Description" />
+
+        <TextView
+            android:id="@+id/text_view_task_date"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/primary_text_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="11/11/1111" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_task_date" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

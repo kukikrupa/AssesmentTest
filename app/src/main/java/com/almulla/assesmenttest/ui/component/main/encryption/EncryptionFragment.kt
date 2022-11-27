@@ -24,12 +24,38 @@ class EncryptionFragment : BaseFragment<FragmentEncryptionBinding>(), View.OnCli
 
     @SuppressLint("ClickableViewAccessibility")
     override fun initViewBinding() {
-
+        getBinding().apply {
+            btnEncrypt.setOnClickListener(this@EncryptionFragment)
+            btnDecrypt.setOnClickListener(this@EncryptionFragment)
+        }
     }
 
     override fun onClick(view: View?) {
         getBinding().apply {
-            when (view) {
+            with(encryptionVm)
+            {
+                when (view) {
+                    btnEncrypt -> {
+                        try {
+                            val secretKey = generateKey(etKey.text.toString())
+                            val strResult = encryptMsg(etString.text.toString(), secretKey)
+                            tvResults.setText(strResult)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+
+                    }
+
+                    btnDecrypt -> {
+                        try {
+                            val secretKey = generateKey(etKey.text.toString())
+                            val strResult = decryptMsg(etString.text.toString(), secretKey)
+                            tvResults.setText(strResult)
+                        } catch (e: java.lang.Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
             }
         }
     }

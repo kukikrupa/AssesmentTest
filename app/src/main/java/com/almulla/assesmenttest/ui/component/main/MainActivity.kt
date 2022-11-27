@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.almulla.assesmenttest.R
 import com.almulla.assesmenttest.databinding.ActivityMainBinding
 import com.almulla.assesmenttest.ui.base.BaseActivity
 import com.almulla.assesmenttest.ui.component.change_language.ChangeLanguageActivity
 import com.almulla.assesmenttest.ui.component.login.LoginActivity
-import com.almulla.assesmenttest.utils.clearUserData
+import com.almulla.assesmenttest.ui.component.main.to_do.Task
+import com.almulla.assesmenttest.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.item_toolbar.*
 
@@ -45,6 +47,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
             drawerLayout.setDrawerListener(mDrawerToggle)
+
+            text_welcome.text = "Welcome " + getUserName()
 
             mBottomNavigation.setOnNavigationItemSelectedListener {
                 when (it.itemId) {
@@ -147,5 +151,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVm>(), View.OnClickLi
     private fun logoutUser() {
         clearUserData()
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == NAVIGATION_TO_TASK) {
+            val name: String = data?.getStringExtra(TASK_NAME) ?: ""
+            val date: String = data?.getStringExtra(TASK_DATE) ?: ""
+            viewModel.addTask(Task(name, date))
+        }
     }
 }
